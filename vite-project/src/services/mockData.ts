@@ -1,4 +1,4 @@
-import { Brand, Category, Product, ProductReview } from '../types';
+import type { Brand, Category, Product, ProductReview } from '../types';
 
 export const MOCK_CATEGORIES: Category[] = [
   {

@@ -169,6 +169,32 @@ export interface Order {
   createdAt: string;
 }
 
+export interface OrderCreateRequest {
+  addressId?: string;
+  shippingAddress: {
+    recipientName: string;
+    streetAddress1: string;
+    city: string;
+    stateProvince: string;
+    postalCode: string;
+    country: string;
+    recipientPhone: string;
+  };
+  billingAddress?: {
+    recipientName: string;
+    streetAddress1: string;
+    city: string;
+    stateProvince: string;
+    postalCode: string;
+    country: string;
+    recipientPhone: string;
+  };
+  couponCode?: string;
+  paymentMethod: PaymentMethod;
+  shippingMethod?: string;
+  customerNotes?: string;
+}
+
 export interface ProductReview {
   id: string;
   productId: string;
@@ -179,6 +205,31 @@ export interface ProductReview {
   comment?: string;
   isVerifiedPurchase: boolean;
   createdAt: string;
+}
+
+export interface ReviewRequestDto {
+  productId: string;
+  orderId?: string;
+  rating: number;
+  title: string;
+  comment: string;
+}
+
+export interface ProductRequestDto {
+  name: string;
+  slug?: string;
+  shortDescription?: string;
+  description?: string;
+  sku: string;
+  basePrice: number;
+  discountPrice?: number;
+  stockQuantity: number;
+  brandId?: string;
+  categoryIds?: string[];
+  isFeatured?: boolean;
+  isActive?: boolean;
+  images?: { imageUrl: string; altText?: string; isPrimary?: boolean; displayOrder?: number }[];
+  variants?: { variantName: string; sku: string; priceModifier: number; stockQuantity: number; attributes?: Record<string, any> }[];
 }
 
 export interface ApiResponse<T> {
@@ -196,4 +247,23 @@ export interface AuthResponse {
   firstName: string;
   lastName: string;
   role: Role;
+}
+
+export interface ToastMessage {
+  id: string;
+  type: 'success' | 'error' | 'info' | 'warning';
+  title: string;
+  message?: string;
+  duration?: number;
+}
+
+export interface ProductFilterState {
+  search: string;
+  categoryId?: string;
+  brandId?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  onlyInStock?: boolean;
+  onlyFeatured?: boolean;
+  sortBy: 'featured' | 'price-asc' | 'price-desc' | 'rating' | 'newest';
 }

@@ -1,4 +1,4 @@
-import { ApiResponse, Category } from '../types';
+import type { ApiResponse, Category } from '../types';
 import { apiFetch } from './api';
 import { MOCK_CATEGORIES } from './mockData';
 

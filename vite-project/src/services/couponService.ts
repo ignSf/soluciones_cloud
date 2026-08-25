@@ -1,4 +1,4 @@
-import { ApiResponse, Coupon } from '../types';
+import type { ApiResponse, Coupon } from '../types';
 import { apiFetch } from './api';
 
 export const couponService = {

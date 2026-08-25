@@ -1,6 +1,6 @@
 // Base API config and Fetch Wrapper
 
-const API_BASE_URL = 'http://localhost:8080/api/v1';
+export const API_BASE_URL = 'http://localhost:8080/api/v1';
 
 export const getAuthToken = (): string | null => {
   return localStorage.getItem('auth_token');
@@ -54,7 +54,7 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
       const errorJson = await response.json();
       errorMessage = errorJson.message || errorJson.error || errorMessage;
     } catch {
-      // Ignorar si la respuesta de error no es JSON
+      // Si la respuesta no es JSON
     }
     throw new Error(errorMessage);
   }
